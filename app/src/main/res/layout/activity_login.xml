@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:layout_marginTop="500px"
+        android:background="@drawable/shape_rounded"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:layout_gravity="center"
+            android:layout_marginLeft="25px"
+            android:src="@drawable/ic_id" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="100px"
+            android:layout_weight="1"
+            android:layout_marginRight="25px"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:gravity="center"
+            android:hint="请输入账号"
+            android:textSize="20sp"
+            android:inputType="text"
+            android:id="@+id/id_login_edit_text_id"/>
+
+        <ImageView
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:layout_gravity="center"
+            android:layout_marginRight="25px"
+            android:src="@drawable/ic_clear"
+            android:visibility="invisible"
+            android:id="@+id/id_login_image_view_id_clear"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="80px"
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:background="@drawable/shape_rounded"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:layout_gravity="center"
+            android:layout_marginLeft="25px"
+            android:src="@drawable/ic_password" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="100px"
+            android:layout_weight="1"
+            android:layout_marginRight="25px"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:gravity="center"
+            android:hint="请输入密码"
+            android:textSize="20sp"
+            android:inputType="textPassword"
+            android:id="@+id/id_login_edit_text_pass_word"/>
+
+        <ImageView
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:layout_gravity="center"
+            android:layout_marginRight="25px"
+            android:src="@drawable/ic_clear"
+            android:visibility="invisible"
+            android:id="@+id/id_login_image_view_pass_word_clear"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50px">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="记住账号密码"
+            android:id="@+id/id_login_check_box_remember_id_pass_word"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="自动登录"
+            android:id="@+id/id_login_check_box_auto_login"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_marginLeft="100px"
+        android:layout_marginRight="100px"
+        android:layout_marginTop="50px"
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:background="@drawable/selector_login_button"
+        android:text="登录"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:id="@+id/id_login_button_login"/>
+
+</LinearLayout>
