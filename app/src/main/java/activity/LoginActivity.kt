@@ -1,21 +1,26 @@
 package activity
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.Handler
+
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.*
+import app.App
 import com.hontech.icecreamutilapp.R
 import data.LoginManager
 import data.User
 import task.Task
 
-class LoginActivity : AppCompatActivity()
+class LoginActivity: AppCompatActivity()
 {
     companion object
     {
@@ -40,9 +45,10 @@ class LoginActivity : AppCompatActivity()
         initPermission()
     }
 
-    private fun onLogin()
+    private fun onLogin(user: User)
     {
-
+        val intent = Intent(this, ScanActivity::class.java)
+        startActivity(intent)
     }
 
     private fun initPermission()
@@ -114,27 +120,35 @@ class LoginActivity : AppCompatActivity()
 
         mEditTextPassword.addTextChangedListener(mPasswordWatcher)
         mEditTextId.addTextChangedListener(mIdWatcher)
+
         mImageViewIdClear.setOnClickListener {
+
             mEditTextId.setText("")
         }
         mImageViewPasswordClear.setOnClickListener {
+
             mEditTextPassword.setText("")
         }
 
         val user = LoginManager.getUser()
 
-        if (user != null) {
+        if (user != null)
+        {
+
             when (user.mode)
             {
-                User.MODE_AUTO -> {
+                User.MODE_AUTO ->
+                {
                     // 开始登录
                     mCheckBoxAuto.isChecked = true
                     mCheckBoxRemember.isChecked = true
                     mEditTextId.setText(user.id)
                     mEditTextPassword.setText(user.password)
-                    Task.UiHandler.postDelayed(::onLogin, 500)
+                    Task.UiHandler.postDelayed({onLogin(user)}, 500)
                 }
-                User.MODE_REMEMBER -> {
+
+                User.MODE_REMEMBER ->
+                {
                     //
                     mCheckBoxAuto.isChecked = false
                     mCheckBoxRemember.isChecked = true
@@ -144,8 +158,10 @@ class LoginActivity : AppCompatActivity()
             }
         }
 
-        mCheckBoxAuto.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
+        mCheckBoxAuto.setOnCheckedChangeListener { _, isChecked->
+
+            if (isChecked)
+            {
                 mCheckBoxRemember.isChecked = true
             }
         }
@@ -153,39 +169,79 @@ class LoginActivity : AppCompatActivity()
         mButtonLogin.setOnClickListener {
             // 开始登录
             val id = mEditTextId.text
-            if (id.isEmpty()) {
+            if (id.isEmpty())
+            {
                 showToast("请输入账号")
                 return@setOnClickListener
             }
+
             val password = mEditTextPassword.text
-            if (password.isEmpty()) {
+            if (password.isEmpty())
+            {
                 showToast("请输入密码")
                 return@setOnClickListener
             }
-            val mode = if (mCheckBoxAuto.isChecked) {
+
+            val mode = if (mCheckBoxAuto.isChecked)
+            {
                 User.MODE_AUTO
-            } else if (mCheckBoxRemember.isChecked) {
+            }
+            else if (mCheckBoxRemember.isChecked)
+            {
                 User.MODE_REMEMBER
-            } else {
+            }
+            else
+            {
                 User.MODE_DEFAULT
             }
+
             val user = User(id.toString(), password.toString(), mode)
             LoginManager.save(user)
             // 开始登录
-            onLogin()
+            onLogin(user)
         }
 
     }
 
     private fun showToast(msg: String)
     {
-        if (mToast == null) {
+        if (mToast == null)
+        {
             mToast = Toast.makeText(this, msg, Toast.LENGTH_SHORT)
-        } else {
-            mToast!!.setText(msg)
-            mToast!!.duration = Toast.LENGTH_SHORT
         }
-        mToast!!.show()
+        else
+        {
+            mToast !!.setText(msg)
+            mToast !!.duration = Toast.LENGTH_SHORT
+        }
+        mToast !!.show()
+    }
+
+    private class LoginPopupWindow : PopupWindow()
+    {
+        companion object
+        {
+            val mView = LayoutInflater.from(App.context).inflate(R.layout.popup_login, null)
+        }
+
+        init
+        {
+            val group = mView.parent
+            if (group != null)
+            {
+                (group as ViewGroup).removeAllViews()
+            }
+            width = 300
+            height = 300
+            contentView = mView
+            isOutsideTouchable = true
+            isFocusable = true
+        }
+
+        fun show(view: View)
+        {
+            showAtLocation(view, Gravity.CENTER, 0, 0)
+        }
     }
 
 }

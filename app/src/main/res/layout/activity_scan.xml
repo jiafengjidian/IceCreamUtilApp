@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/id_scan_recycler_view" />
+
+    <Button
+        android:layout_width="200px"
+        android:layout_height="200px"
+        android:layout_gravity="right|bottom"
+        android:layout_margin="100px"
+        android:background="@drawable/ripple_scan_button"
+        android:elevation="20px"
+        android:id="@+id/id_scan_button"
+        android:text="扫描"/>
+
+</FrameLayout>

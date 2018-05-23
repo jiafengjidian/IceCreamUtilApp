@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/menu_bluetooth_debug_action"
+        app:showAsAction="always"
+        android:title="调试"
+        android:icon="@drawable/ic_debug_action"/>
+
+    <item android:id="@+id/menu_bluetooth_setting_action"
+        app:showAsAction="always"
+        android:title="设置"
+        android:icon="@drawable/ic_setting_action"/>
+
+    <item android:id="@+id/menu_bluetooth_goodstype_action"
+        app:showAsAction="always"
+        android:title="货道"
+        android:icon="@drawable/ic_goodstype_action"/>
+
+</menu>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="600px"
+    android:layout_height="800px"
+    android:background="@drawable/shape_popup_debug_moto"
+    android:padding="25px"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_marginTop="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="20sp"
+        android:text="机械臂1控制"
+        android:id="@+id/id_popup_debug_moto_setting_text_view_title"/>
+
+    <LinearLayout
+        android:layout_marginTop="50px"
+        android:layout_width="match_parent"
+        android:layout_height="125px"
+        android:background="@drawable/shape_rounded"
+        android:paddingLeft="50px"
+        android:paddingRight="50px"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="15sp"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="当前位置:" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="15sp"
+            android:textColor="@android:color/holo_red_light"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="345"
+            android:id="@+id/id_popup_debug_moto_setting_text_view_current_value"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="50px"
+        android:layout_width="match_parent"
+        android:layout_height="125px"
+        android:background="@drawable/shape_rounded"
+        android:paddingLeft="75px"
+        android:paddingRight="25px"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:textSize="15sp"
+            android:textColor="@android:color/holo_red_light"
+            android:hint="请输入目标位置"
+            android:id="@+id/id_popup_debug_moto_setting_edit_text_value"/>
+
+        <ImageView
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_clear"
+            android:id="@+id/id_popup_debug_moto_setting_image_view_clear"
+            android:visibility="invisible"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:orientation="horizontal"
+        android:layout_marginTop="75px">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="25px"
+            android:background="@drawable/ripple_button_popup_debug_setting"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:text="取消"
+            android:id="@+id/id_popup_debug_moto_setting_button_cancel"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ripple_button_popup_debug_setting"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:text="确定"
+            android:id="@+id/id_popup_debug_moto_setting_button_ok"/>
+
+    </LinearLayout>
+
+</LinearLayout>

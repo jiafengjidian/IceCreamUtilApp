@@ -26,7 +26,13 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="activity.ScanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ScanTheme" />
 
+        <activity android:name="activity.BluetoothActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/BluetoothTheme"/>
 
     </application>
 
