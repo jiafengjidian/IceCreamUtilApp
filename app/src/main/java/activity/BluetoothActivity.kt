@@ -23,13 +23,15 @@ import app.App
 import com.hontech.icecreamutilapp.R
 import com.wang.avi.AVLoadingIndicatorView
 import data.BluetoothDeviceManager
+import data.DeviceStatusManager
+import data.DeviceStatusManager.EXTRA_POSITION_X
 import fragment.DebugFragment
 import fragment.GoodTypeFragment
 import fragment.SettingFragment
 import service.Bluetooth
 
 import service.BluetoothService
-import util.log
+import util.*
 
 class BluetoothActivity : AppCompatActivity()
 {
@@ -37,6 +39,7 @@ class BluetoothActivity : AppCompatActivity()
     private val mNavigationView: BottomNavigationView by lazy { findViewById<BottomNavigationView>(R.id.id_bluetooth_bottom_navigation_view) }
     private lateinit var mBluetoothAddress: String
     private val mWaitConnectPopupWindow = LoadingPopupWindow()
+    private lateinit var mLocalBroadcastManager: LocalBroadcastManager
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -116,7 +119,10 @@ class BluetoothActivity : AppCompatActivity()
         val filter = IntentFilter()
         filter.addAction(Bluetooth.ACTION_BLUETOOTH_DISCONNECTED)
         filter.addAction(Bluetooth.ACTION_BLUETOOTH_CONNECTED)
-        LocalBroadcastManager.getInstance(this).registerReceiver(mBluetoothReceiver, filter)
+        filter.addAction(Bluetooth.ACTION_BLUETOOTH_MESSAGE_READY)
+
+        mLocalBroadcastManager = LocalBroadcastManager.getInstance(this)
+        mLocalBroadcastManager.registerReceiver(mBluetoothReceiver, filter)
 
         val intent = Intent(this, BluetoothService::class.java)
         bindService(intent, mBluetoothServiceConnection, Service.BIND_AUTO_CREATE)
@@ -127,7 +133,7 @@ class BluetoothActivity : AppCompatActivity()
     private inline fun unregisterService()
     {
         mWaitConnectPopupWindow.dismiss()
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(mBluetoothReceiver)
+        mLocalBroadcastManager.unregisterReceiver(mBluetoothReceiver)
         BluetoothDeviceManager.bleControl!!.disconnect()
         BluetoothDeviceManager.bleControl = null
         unbindService(mBluetoothServiceConnection)
@@ -159,8 +165,43 @@ class BluetoothActivity : AppCompatActivity()
                     log("蓝牙连接断开")
                     Toast.makeText(this@BluetoothActivity, "蓝牙已经断开连接", Toast.LENGTH_SHORT).show()
                 }
+
+                Bluetooth.ACTION_BLUETOOTH_MESSAGE_READY -> onMessageReady(intent)
             }
         }
+    }
+
+    private inline fun onMessageReady(intent: Intent)
+    {
+        val byteArray = intent.getByteArrayExtra(Bluetooth.ACTION_BLUETOOTH_MESSAGE_READY)
+        if (!byteArray.isCorrect()) {
+            log("协议格式错误:${byteArray.toHexString()}")
+            return
+        }
+        val type = byteArray.getType()
+        when (type)
+        {
+            RESULT_TYPE_STATUS ->
+            {
+                val p1 = byteArray.getPosition1()
+                val p2 = byteArray.getPosition2()
+                val ret = DeviceStatusManager.updatePosition(p1, p2)
+                if (ret) {
+                    updateBroadcast(DeviceStatusManager.ACTION_POSITION_CHANGED)
+                }
+            }
+
+            RESULT_TYPE_MOTO ->
+            {
+
+            }
+        }
+    }
+
+    private inline fun updateBroadcast(action: String)
+    {
+        val intent = Intent(action)
+        mLocalBroadcastManager.sendBroadcast(intent)
     }
 
     private val mBluetoothServiceConnection = object: ServiceConnection

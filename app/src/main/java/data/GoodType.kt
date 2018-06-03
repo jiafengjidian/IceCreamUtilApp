@@ -1,6 +1,6 @@
 package data
 
-data class Position(val x: Int, val y: Int)
+data class Position(var x: Int, var y: Int)
 
 data class GoodType(val name: String, val position: Position)
 {

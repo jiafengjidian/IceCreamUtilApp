@@ -9,12 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.hontech.icecreamutilapp.R
+import data.BluetoothDeviceManager
+import protocol.TestMotoProtocol
+import service.Bluetooth
 import view.CustomEditText
 import view.CustomSeekBar
 
 class SettingFragment : Fragment()
 {
-
     private lateinit var mRobot1Custom: CustomEditText
     private lateinit var mRobot2Custom: CustomEditText
     private lateinit var mPickMotoCustom: CustomSeekBar
@@ -52,22 +54,42 @@ class SettingFragment : Fragment()
 
     private fun onPickMotoUp(view: View)
     {
-
+        val sp = mPickMotoCustom.seekBar().progress
+        val protocol = TestMotoProtocol.Build().apply {
+            setPickMotoAction(1)
+            setPickMotoSpeed(sp)
+        }.build()
+        BluetoothDeviceManager.bleControl!!.write(protocol.getByteArray())
     }
 
     private fun onPickMotoDown(view: View)
     {
-
+        val sp = mPickMotoCustom.seekBar().progress
+        val protocol = TestMotoProtocol.Build().apply {
+            setPickMotoAction(2)
+            setPickMotoSpeed(sp)
+        }.build()
+        BluetoothDeviceManager.bleControl!!.write(protocol.getByteArray())
     }
 
     private fun onFridgeUp(view: View)
     {
-
+        val sp = mFridgeCustom.seekBar().progress
+        val bytes = TestMotoProtocol.Build().apply {
+            setFridgeAction(1)
+            setFridgeSpeed(sp)
+        }.build().getByteArray()
+        BluetoothDeviceManager.bleControl!!.write(bytes)
     }
 
     private fun onFridgeDown(view: View)
     {
-
+        val sp = mFridgeCustom.seekBar().progress
+        val bytes = TestMotoProtocol.Build().apply {
+            setFridgeSpeed(2)
+            setFridgeSpeed(sp)
+        }.build().getByteArray()
+        BluetoothDeviceManager.bleControl!!.write(bytes)
     }
 
 }

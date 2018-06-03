@@ -2,6 +2,11 @@ package util
 
 import android.util.Log
 
+const val RESULT_TYPE_STATUS = 0x01
+const val RESULTL_TYPE_ = 0x02
+const val RESULT_TYPE__ = 0x03
+const val RESULT_TYPE_MOTO = 0x04
+
 inline fun log(msg: String)
 {
     Log.d("调试", msg)
@@ -53,5 +58,10 @@ inline fun ByteArray.getPosition2(): Int
 inline fun ByteArray.getSwitchStatus(): Int
 {
     return (arg(5).toInt() shl 7) + arg(6)
+}
+
+inline fun ByteArray.getType(): Int
+{
+    return this[2].toInt() and 0x7F
 }
 
