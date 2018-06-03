@@ -21,6 +21,11 @@ import data.BluetoothDeviceManager
 
 class ScanActivity : AppCompatActivity()
 {
+    companion object
+    {
+        const val EXTRA_BLUETOOTH_ADDRESS = "extra.bluetooth.address"
+    }
+
     private val mScanButton: Button by lazy { findViewById<Button>(R.id.id_scan_button) }
     private val mRecyclerView: RecyclerView by lazy { findViewById<RecyclerView>(R.id.id_scan_recycler_view) }
     private val mAdapter: RecyclerViewAdapter by lazy { RecyclerViewAdapter(::onItemClick) }
@@ -53,6 +58,8 @@ class ScanActivity : AppCompatActivity()
     private fun onItemClick(position: Int)
     {
         val intent = Intent(this, BluetoothActivity::class.java)
+        val info = BluetoothDeviceManager.get(position)
+        intent.putExtra(EXTRA_BLUETOOTH_ADDRESS, info.address)
         startActivity(intent)
     }
 
@@ -144,6 +151,8 @@ class ScanActivity : AppCompatActivity()
             width = 600
             height = 800
             contentView = mView
+            isFocusable = true
+            isOutsideTouchable = true
         }
 
         fun show(view: View, dismissCallback: () -> Unit)

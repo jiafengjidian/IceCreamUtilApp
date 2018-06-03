@@ -13,44 +13,13 @@
         android:gravity="center"
         android:textColor="@android:color/holo_orange_dark"
         android:textSize="20sp"
-        android:text="机械臂1控制"
+        android:text="取货电机控制"
         android:id="@+id/id_popup_debug_moto_setting_text_view_title"/>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="150px"
-        android:orientation="horizontal"
-        android:layout_marginTop="75px">
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="25px"
-            android:background="@drawable/ripple_button_popup_debug_setting"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:text="正转"
-            android:id="@+id/id_popup_debug_moto_setting_button_cw"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/ripple_button_popup_debug_setting"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:text="反转"
-            android:id="@+id/id_popup_debug_moto_setting_button_ccw"/>
-
-    </LinearLayout>
-
 
     <LinearLayout
         android:layout_marginTop="50px"
         android:layout_width="match_parent"
-        android:layout_height="125px"
+        android:layout_height="150px"
         android:background="@drawable/shape_rounded"
         android:paddingLeft="75px"
         android:paddingRight="25px"
@@ -65,7 +34,7 @@
             android:background="@null"
             android:textSize="15sp"
             android:textColor="@android:color/holo_red_light"
-            android:hint="请输入目标位置"
+            android:hint="编码器步数"
             android:id="@+id/id_popup_debug_moto_setting_edit_text_value"/>
 
         <ImageView
@@ -77,7 +46,6 @@
             android:visibility="invisible"/>
 
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -93,8 +61,8 @@
             android:background="@drawable/ripple_button_popup_debug_setting"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            android:text="取消"
-            android:id="@+id/id_popup_debug_moto_setting_button_cancel"/>
+            android:text="上升"
+            android:id="@+id/id_popup_debug_moto_setting_button_up"/>
 
         <Button
             android:layout_width="0dp"
@@ -103,9 +71,20 @@
             android:background="@drawable/ripple_button_popup_debug_setting"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            android:text="确定"
-            android:id="@+id/id_popup_debug_moto_setting_button_ok"/>
+            android:text="下降"
+            android:id="@+id/id_popup_debug_moto_setting_button_down"/>
 
     </LinearLayout>
+
+    <Button
+        android:layout_marginTop="50px"
+        android:layout_width="300px"
+        android:layout_height="150px"
+        android:background="@drawable/ripple_button_popup_debug_setting"
+        android:textSize="15sp"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"
+        android:id="@+id/id_popup_debug_moto_setting_button_shipment"
+        android:text="取货" />
 
 </LinearLayout>

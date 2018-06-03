@@ -34,6 +34,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/BluetoothTheme"/>
 
+        <service android:name="service.BluetoothService"/>
+
     </application>
 
 </manifest>

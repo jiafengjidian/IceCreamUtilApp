@@ -12,20 +12,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.hontech.icecreamutilapp.R
-
-import popup.DebugPopupWindow
-import popup.RobotSettingPopupWindow
+import popup.*
 
 
 class DebugFragment : Fragment()
 {
 
-    private val mItems = arrayOf<DebugPopupWindow>(
-            RobotSettingPopupWindow("机械臂1设置", ::onRobot1SettingCallback),
-            RobotSettingPopupWindow("机械臂2设置", ::onRobot2SettingCallback))
-
     private lateinit var mRecyclerView: RecyclerView
-    private val mAdapter = RecyclerViewAdapter(mItems)
+    private val mAdapter = RecyclerViewAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
@@ -42,16 +36,6 @@ class DebugFragment : Fragment()
         mRecyclerView.addItemDecoration(RecyclerViewItemDecoration())
     }
 
-    private fun onRobot1SettingCallback(popupWindow: RobotSettingPopupWindow)
-    {
-
-    }
-
-    private fun onRobot2SettingCallback(popupWindow: RobotSettingPopupWindow)
-    {
-
-    }
-
     private class RecyclerViewItemDecoration : RecyclerView.ItemDecoration()
     {
         companion object
@@ -63,9 +47,9 @@ class DebugFragment : Fragment()
         override fun getItemOffsets(outRect: Rect, itemPosition: Int, parent: RecyclerView?)
         {
             super.getItemOffsets(outRect, itemPosition, parent)
-            val col = itemPosition % 3
+            val col = itemPosition % 2
             outRect.bottom = vSize
-            if (itemPosition < 3) {
+            if (itemPosition < 2) {
                 outRect.top = vSize
             }
             outRect.left = hSize - col * hSize / 2
@@ -79,18 +63,12 @@ class DebugFragment : Fragment()
         private val mImage = itemView.findViewById<ImageView>(R.id.id_item_fragment_debug_image_view)
         private val mTextData = itemView.findViewById<TextView>(R.id.id_item_fragment_debug_text_view_data)
 
-        fun set(itemInfo: DebugPopupWindow)
-        {
-            mText.text = itemInfo.title
-            mCardView.setOnClickListener {
-                itemInfo.show(mRecyclerView)
-            }
-        }
+
     }
 
-    private inner class RecyclerViewAdapter(val items: Array<DebugPopupWindow>) : RecyclerView.Adapter<RecyclerViewItem>()
+    private inner class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewItem>()
     {
-        override fun getItemCount() = items.size
+        override fun getItemCount() = 0
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewItem
         {
@@ -100,8 +78,6 @@ class DebugFragment : Fragment()
 
         override fun onBindViewHolder(holder: RecyclerViewItem, position: Int)
         {
-            val info = items[position]
-            holder.set(info)
         }
     }
 }

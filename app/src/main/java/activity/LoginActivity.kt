@@ -16,6 +16,7 @@ import android.view.ViewGroup
 import android.widget.*
 import app.App
 import com.hontech.icecreamutilapp.R
+import com.wang.avi.AVLoadingIndicatorView
 import data.LoginManager
 import data.User
 import task.Task

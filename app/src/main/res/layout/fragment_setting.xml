@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="2"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
+    android:useDefaultMargins="true">
+
+    <TextView
+        android:layout_columnWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_height="150px"
+        android:textColor="@android:color/holo_orange_dark"
+        android:text="(10,20)"
+        android:gravity="center"
+        android:textSize="36sp" />
+
+    <view.CustomEditText
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:id="@+id/id_fragment_setting_robot1_custom_edit_text"
+        android:layout_height="150px"/>
+
+    <view.CustomEditText
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:id="@+id/id_fragment_setting_robot2_custom_edit_text"
+        android:layout_height="150px"/>
+
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_height="150px"
+        android:layout_marginLeft="100px"
+        android:layout_marginRight="100px"
+        android:background="@drawable/ripple_button_popup_debug_setting"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:id="@+id/id_fragment_setting_robot_button"
+        android:text="测试机械手" />
+
+    <view.CustomSeekBar
+        android:layout_columnWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_height="150px"
+        android:id="@+id/id_fragment_setting_pick_moto_seek_bar"/>
+
+    <Button
+        android:layout_marginLeft="100px"
+        android:layout_marginRight="100px"
+        android:layout_columnWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_height="150px"
+        android:background="@drawable/ripple_button_popup_debug_setting"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:id="@+id/id_fragment_setting_pick_moto_up"
+        android:text="升降电机上升" />
+    <Button
+        android:layout_marginLeft="100px"
+        android:layout_marginRight="100px"
+        android:layout_columnWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_height="150px"
+        android:background="@drawable/ripple_button_popup_debug_setting"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:id="@+id/id_fragment_setting_pick_moto_down"
+        android:text="升降电机下降" />
+
+    <view.CustomSeekBar
+        android:layout_columnWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_height="150px"
+        android:id="@+id/id_fragment_setting_fridge_seek_bar"/>
+
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_height="150px"
+        android:layout_marginLeft="100px"
+        android:layout_marginRight="100px"
+        android:background="@drawable/ripple_button_popup_debug_setting"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:id="@+id/id_fragment_setting_fridge_up"
+        android:text="冰箱门打开" />
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_height="150px"
+        android:layout_marginLeft="100px"
+        android:layout_marginRight="100px"
+        android:background="@drawable/ripple_button_popup_debug_setting"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:id="@+id/id_fragment_setting_fridge_down"
+        android:text="冰箱门关闭" />
+
+</GridLayout>

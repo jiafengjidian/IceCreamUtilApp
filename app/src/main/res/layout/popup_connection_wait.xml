@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="600px"
+    android:layout_height="800px"
+    android:background="@drawable/shape_popup_scan"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="正在连接"
+        android:textSize="24sp"
+        android:textColor="@android:color/holo_red_light" />
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:layout_width="match_parent"
+        android:layout_height="600px"
+        android:layout_gravity="center"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:indicatorName="BallSpinFadeLoaderIndicator"
+        style="@style/AVLoadingIndicatorView.Large"
+        app:indicatorColor="@android:color/holo_blue_bright"
+        android:id="@+id/id_popup_loading_view"/>
+
+
+</FrameLayout>

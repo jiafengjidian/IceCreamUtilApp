@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="600px"
+    android:layout_height="800px"
+    android:background="@drawable/shape_popup_debug_moto"
+    android:padding="25px"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_marginTop="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="20sp"
+        android:text="空压机控制"
+        android:id="@+id/id_popup_debug_moto_setting_text_view_title"/>
+
+    <Button
+        android:layout_marginTop="150px"
+        android:layout_width="300px"
+        android:layout_height="150px"
+        android:background="@drawable/ripple_button_popup_debug_setting"
+        android:textSize="15sp"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"
+        android:id="@+id/id_popup_debug_moto_setting_button_open"
+        android:text="打开" />
+
+    <Button
+        android:layout_marginTop="50px"
+        android:layout_width="300px"
+        android:layout_height="150px"
+        android:background="@drawable/ripple_button_popup_debug_setting"
+        android:textSize="15sp"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"
+        android:id="@+id/id_popup_debug_moto_setting_button_close"
+        android:text="关闭" />
+
+</LinearLayout>

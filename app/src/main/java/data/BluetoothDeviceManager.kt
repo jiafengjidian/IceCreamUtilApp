@@ -5,13 +5,15 @@ import android.bluetooth.le.ScanCallback
 import android.bluetooth.le.ScanResult
 import android.content.Context
 import app.App
+import service.Bluetooth
 
 object BluetoothDeviceManager
 {
+    var bleControl: Bluetooth? = null
+
     private val infoList = ArrayList<BluetoothDeviceInfo>()
     private val bleAdapter = (App.context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager).adapter
     private val bleScanner = bleAdapter.bluetoothLeScanner
-
     private var scanResultCallback = {}
 
     fun getDeviceCount() = infoList.size

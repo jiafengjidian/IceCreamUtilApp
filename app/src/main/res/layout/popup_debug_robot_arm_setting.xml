@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="800px"
+    android:layout_height="1000px"
+    android:background="@drawable/shape_popup_debug_robot_arm_setting"
+    android:padding="50px"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:textSize="24sp"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:id="@+id/id_popup_robot_arm_setting_title_text_view"
+        android:text="机械臂1位置设置" />
+
+    <LinearLayout
+        android:layout_marginTop="70px"
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:background="@drawable/shape_rounded"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25px"
+            android:text="87"
+            android:id="@+id/id_popup_robot_arm_setting_speed_text_view"
+            android:gravity="center" />
+        <SeekBar
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/id_popup_robot_arm_setting_speed_seek_bar"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:layout_marginTop="70px"
+        android:background="@drawable/shape_rounded"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_marginLeft="25px"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:inputType="number"
+            android:textSize="12sp"
+            android:background="@null"
+            android:layout_weight="1"
+            android:id="@+id/id_popup_robot_arm_setting_position_edit_text"
+            android:hint="机械臂1的位置" />
+
+        <ImageView
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_clear"
+            android:layout_marginRight="25px"
+            android:id="@+id/id_popup_robot_arm_setting_position_clear_image_view"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:layout_marginTop="70px"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="300px"
+            android:layout_height="150px"
+            android:layout_gravity="center"
+            android:background="@drawable/ripple_button_popup_debug_setting"
+            android:text="设置"
+            android:id="@+id/id_popup_robot_arm_setting_setting_button"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:layout_width="300px"
+            android:layout_height="150px"
+            android:layout_marginLeft="100px"
+            android:layout_gravity="center"
+            android:background="@drawable/ripple_button_popup_debug_setting"
+            android:text="刹车"
+            android:id="@+id/id_popup_robot_arm_setting_brake_button"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

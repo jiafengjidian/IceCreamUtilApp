@@ -1,9 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="600px"
+    android:layout_height="800px"
+    android:background="@drawable/shape_popup_debug_moto"
+    android:padding="25px"
     android:orientation="vertical">
 
-    
+    <TextView
+        android:layout_marginTop="25px"
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:background="@drawable/shape_rounded"
+        android:textSize="15sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="冰箱门已经关闭"
+        android:id="@+id/id_popup_debug_moto_setting_text_view_status"/>
+
+    <LinearLayout
+        android:layout_marginTop="75px"
+        android:layout_width="match_parent"
+        android:layout_height="125px"
+        android:paddingLeft="25px"
+        android:paddingRight="25px"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="25px"
+            android:background="@drawable/ripple_button_popup_debug_setting"
+            android:text="上升"
+            android:textColor="@android:color/white"
+            android:id="@+id/id_popup_debug_moto_setting_button_up"
+            />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ripple_button_popup_debug_setting"
+            android:text="下降"
+            android:textColor="@android:color/white"
+            android:id="@+id/id_popup_debug_moto_setting_button_down"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="75px"
+        android:layout_width="match_parent"
+        android:layout_height="125px"
+        android:paddingLeft="25px"
+        android:paddingRight="25px"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="25px"
+            android:background="@drawable/ripple_button_popup_debug_setting"
+            android:text="打开"
+            android:textColor="@android:color/white"
+            android:id="@+id/id_popup_debug_moto_setting_button_open"
+            />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ripple_button_popup_debug_setting"
+            android:text="关闭"
+            android:textColor="@android:color/white"
+            android:id="@+id/id_popup_debug_moto_setting_button_close"
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_marginTop="50px"
+        android:layout_width="300px"
+        android:layout_height="125px"
+        android:background="@drawable/ripple_button_popup_debug_setting"
+        android:textSize="15sp"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"
+        android:id="@+id/id_popup_debug_moto_setting_button_brake"
+        android:text="刹车" />
 
 </LinearLayout>

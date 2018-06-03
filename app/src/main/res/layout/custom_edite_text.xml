@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="100px"
+        android:layout_weight="1"
+        android:id="@+id/id_custom_edit_text"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginLeft="25px"
+        android:background="@null" />
+
+    <ImageView
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:src="@drawable/ic_clear"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        android:layout_marginRight="25px"
+        android:id="@+id/id_custom_image_view"
+        />
+
+</merge>
