@@ -12,8 +12,9 @@
         android:layout_columnSpan="2"
         android:layout_height="150px"
         android:textColor="@android:color/holo_orange_dark"
-        android:text="(10,20)"
+        android:text="(518,518)"
         android:gravity="center"
+        android:id="@+id/id_fragment_setting_text_view"
         android:textSize="36sp" />
 
     <view.CustomEditText

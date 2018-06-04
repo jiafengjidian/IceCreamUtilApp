@@ -8,6 +8,8 @@ object DeviceStatusManager
 
     private var mLocalPosition = Position(-1, -1)
 
+    fun getPosition() = mLocalPosition
+
     fun updatePosition(x: Int, y: Int): Boolean
     {
         val p = Position(x, y)
