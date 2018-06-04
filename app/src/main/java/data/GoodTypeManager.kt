@@ -27,8 +27,8 @@ object GoodTypeManager
     {
         val p = GoodType.Build().apply {
             name = "位置:${getCounter()}"
-            x = PositionX
-            y = PositionY
+            x = DeviceStatusManager.getPosition().x
+            y = DeviceStatusManager.getPosition().y
         }.build()
         add(p)
     }

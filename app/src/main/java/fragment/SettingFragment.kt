@@ -14,12 +14,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import com.hontech.icecreamutilapp.R
 import data.BluetoothDeviceManager
 import data.DeviceStatusManager
 import protocol.TestMotoProtocol
+import protocol.TestRobotArmProtocol
 import service.Bluetooth
 import util.RESULT_TYPE_STATUS
+import util.log
+import util.toHexString
 import view.CustomEditText
 import view.CustomSeekBar
 
@@ -34,6 +38,7 @@ class SettingFragment : Fragment()
     private lateinit var mPickMotoDownButton: Button
     private lateinit var mFridgeUpButton: Button
     private lateinit var mFridgeDownButton: Button
+    private lateinit var mRobotButton: Button
     private lateinit var mLocalBroadcast: LocalBroadcastManager
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
@@ -54,6 +59,7 @@ class SettingFragment : Fragment()
         mFridgeDownButton = view.findViewById(R.id.id_fragment_setting_fridge_down)
         mFridgeUpButton = view.findViewById(R.id.id_fragment_setting_fridge_up)
         mPositionTextView = view.findViewById(R.id.id_fragment_setting_text_view)
+        mRobotButton = view.findViewById(R.id.id_fragment_setting_robot_button)
         mRobot1Custom.edit().hint = "位置1"
         mRobot2Custom.edit().hint = "位置2"
 
@@ -61,6 +67,7 @@ class SettingFragment : Fragment()
         mPickMotoUpButton.setOnClickListener(::onPickMotoUp)
         mFridgeDownButton.setOnClickListener(::onFridgeDown)
         mFridgeUpButton.setOnClickListener(::onFridgeUp)
+        mRobotButton.setOnClickListener(::onRobot)
 
         mLocalBroadcast = LocalBroadcastManager.getInstance(context!!)
         val filter = IntentFilter(DeviceStatusManager.ACTION_POSITION_CHANGED)
@@ -83,24 +90,52 @@ class SettingFragment : Fragment()
         }
     }
 
+    private fun onRobot(view: View)
+    {
+        val s = mRobot1Custom.edit().text
+        if (s.isEmpty()) {
+            Toast.makeText(context, "请输入机械臂1的步数", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val sp = s.toString().toInt()
+
+        val s1 = mRobot2Custom.edit().text
+        if (s1.isEmpty()) {
+            Toast.makeText(context, "请输入机械臂2的步数", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val sp1 = s1.toString().toInt()
+
+        val bytes = TestRobotArmProtocol.Build().apply {
+            robotArm1Position = sp
+            robotArm2Position = sp1
+            robotArm1Speed = 50
+            robotArm2Speed = 50
+        }.build().getByteArray()
+        log(bytes.toHexString())
+        BluetoothDeviceManager.bleControl!!.write(bytes)
+    }
+
     private fun onPickMotoUp(view: View)
     {
         val sp = mPickMotoCustom.seekBar().progress
-        val protocol = TestMotoProtocol.Build().apply {
+        val bytes = TestMotoProtocol.Build().apply {
             setPickMotoAction(1)
             setPickMotoSpeed(sp)
-        }.build()
-        BluetoothDeviceManager.bleControl!!.write(protocol.getByteArray())
+        }.build().getByteArray()
+        log(bytes.toHexString())
+        BluetoothDeviceManager.bleControl!!.write(bytes)
     }
 
     private fun onPickMotoDown(view: View)
     {
         val sp = mPickMotoCustom.seekBar().progress
-        val protocol = TestMotoProtocol.Build().apply {
+        val bytes = TestMotoProtocol.Build().apply {
             setPickMotoAction(2)
             setPickMotoSpeed(sp)
-        }.build()
-        BluetoothDeviceManager.bleControl!!.write(protocol.getByteArray())
+        }.build().getByteArray()
+        log(bytes.toHexString())
+        BluetoothDeviceManager.bleControl!!.write(bytes)
     }
 
     private fun onFridgeUp(view: View)
@@ -110,6 +145,7 @@ class SettingFragment : Fragment()
             setFridgeAction(1)
             setFridgeSpeed(sp)
         }.build().getByteArray()
+        log(bytes.toHexString())
         BluetoothDeviceManager.bleControl!!.write(bytes)
     }
 
@@ -117,9 +153,10 @@ class SettingFragment : Fragment()
     {
         val sp = mFridgeCustom.seekBar().progress
         val bytes = TestMotoProtocol.Build().apply {
-            setFridgeSpeed(2)
+            setFridgeAction(2)
             setFridgeSpeed(sp)
         }.build().getByteArray()
+        log(bytes.toHexString())
         BluetoothDeviceManager.bleControl!!.write(bytes)
     }
 

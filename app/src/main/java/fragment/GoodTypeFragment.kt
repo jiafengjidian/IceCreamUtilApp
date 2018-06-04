@@ -15,6 +15,9 @@ import com.hontech.icecreamutilapp.R
 import data.BluetoothDeviceManager
 import data.GoodTypeManager
 import protocol.TestRobotArmProtocol
+import protocol.TestShipmentProtocol
+import util.log
+import util.toHexString
 
 class GoodTypeFragment : Fragment()
 {
@@ -80,13 +83,12 @@ class GoodTypeFragment : Fragment()
             mTextPosition.text = "(${info.position.x},${info.position.y})"
             mCardView.setOnClickListener {
 
-                val protocol = TestRobotArmProtocol.Build().apply {
-                    robotArm1Position = info.position.x
-                    robotArm2Position = info.position.y
-                    robotArm1Speed = 50
-                    robotArm2Speed = 50
-                }.build()
-                BluetoothDeviceManager.bleControl!!.write(protocol.getByteArray())
+                val bytes = TestShipmentProtocol.Build().apply {
+                    x = info.position.x
+                    y = info.position.y
+                }.build().getByteArray()
+                log(bytes.toHexString())
+                BluetoothDeviceManager.bleControl!!.write(bytes)
             }
         }
     }

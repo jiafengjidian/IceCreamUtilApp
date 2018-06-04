@@ -9,6 +9,7 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_marginLeft="25px"
+        android:inputType="number"
         android:background="@null" />
 
     <ImageView

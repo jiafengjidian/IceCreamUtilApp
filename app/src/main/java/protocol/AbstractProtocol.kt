@@ -98,7 +98,17 @@ class TestMotoProtocol(args: ByteArray) : AbstractProtocol(0x04, args)
     }
 }
 
+class TestShipmentProtocol(args: ByteArray) : AbstractProtocol(0x05, args)
+{
+    class Build
+    {
+        var x = 518
+        var y = 518
 
+        fun build() = TestShipmentProtocol(byteArrayOf( (x shr 7).toByte(), (x and 0x7F).toByte(),
+                                                        (y shr 7).toByte(), (y and 0x7F).toByte()))
+    }
+}
 
 
 
