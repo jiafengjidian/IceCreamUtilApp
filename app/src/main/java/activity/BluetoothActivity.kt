@@ -29,6 +29,7 @@ import data.DeviceStatusManager.EXTRA_POSITION_X
 import fragment.DebugFragment
 import fragment.GoodTypeFragment
 import fragment.SettingFragment
+import popup.GoodsTypeSettingWindow
 import service.Bluetooth
 
 import service.BluetoothService
@@ -127,7 +128,7 @@ class BluetoothActivity : AppCompatActivity()
 
     private inline fun onKeyMenu()
     {
-
+        GoodsTypeSettingWindow.instance.show(mNavigationView)
     }
 
     private inline fun registerService()

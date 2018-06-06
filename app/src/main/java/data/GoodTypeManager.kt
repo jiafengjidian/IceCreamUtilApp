@@ -22,6 +22,18 @@ object GoodTypeManager
         mGoodTypeList.add(info)
     }
 
+    fun add(row: Int, col: Int)
+    {
+        val p = GoodType.Build().apply {
+            name = "位置：${getCounter()}"
+            x = DeviceStatusManager.getPosition().x
+            y = DeviceStatusManager.getPosition().y
+            this.row = row
+            this.col = col
+        }.build()
+        add(p)
+    }
+
     fun add()
     {
         val p = GoodType.Build().apply {

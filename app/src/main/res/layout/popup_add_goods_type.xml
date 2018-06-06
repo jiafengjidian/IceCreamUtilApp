@@ -16,6 +16,7 @@
         <EditText
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginLeft="25px"
             android:layout_weight="1"
             android:background="@null"
             android:textColor="@android:color/holo_orange_light"
@@ -49,6 +50,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@null"
+            android:layout_marginLeft="25px"
             android:textColor="@android:color/holo_orange_light"
             android:textSize="24sp"
             android:inputType="number"

@@ -110,7 +110,16 @@ class TestShipmentProtocol(args: ByteArray) : AbstractProtocol(0x05, args)
     }
 }
 
+class SettingGoodsTypeProtocol(args: ByteArray) : AbstractProtocol(0x06, args)
+{
+    class Buile
+    {
+        var row = 0
+        var col = 0
 
+        fun build() = SettingGoodsTypeProtocol(byteArrayOf( row.toByte(), col.toByte() ))
+    }
+}
 
 
 
