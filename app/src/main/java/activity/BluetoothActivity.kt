@@ -14,6 +14,7 @@ import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Gravity
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.PopupWindow
@@ -112,6 +113,21 @@ class BluetoothActivity : AppCompatActivity()
                 }
             }
         })
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean
+    {
+        if (keyCode == KeyEvent.KEYCODE_MENU)
+        {
+            onKeyMenu()
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
+    }
+
+    private inline fun onKeyMenu()
+    {
+
     }
 
     private inline fun registerService()

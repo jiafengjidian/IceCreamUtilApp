@@ -14,7 +14,7 @@ import android.widget.TextView
 import com.hontech.icecreamutilapp.R
 import data.BluetoothDeviceManager
 import data.GoodTypeManager
-import protocol.TestRobotArmProtocol
+
 import protocol.TestShipmentProtocol
 import util.log
 import util.toHexString
@@ -108,5 +108,7 @@ class GoodTypeFragment : Fragment()
             holder.set(position)
         }
     }
+
+
 
 }

@@ -12,11 +12,7 @@ object DeviceStatusManager
 
     fun updatePosition(x: Int, y: Int): Boolean
     {
-        val p = Position(x, y)
-        if (p != mLocalPosition) {
-            mLocalPosition = p
-            return true
-        }
-        return false
+        mLocalPosition = Position(x, y)
+        return true
     }
 }

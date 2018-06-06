@@ -2,9 +2,6 @@ package data
 
 object GoodTypeManager
 {
-    var PositionX = 0
-    var PositionY = 0
-
     private val mGoodTypeList = ArrayList<GoodType>()
 
     init
@@ -13,6 +10,8 @@ object GoodTypeManager
             x = 518
             y = 518
             name = "原点"
+            row = 0
+            col = 0
         }.build()
         mGoodTypeList.add(origin)
     }
@@ -29,6 +28,8 @@ object GoodTypeManager
             name = "位置:${getCounter()}"
             x = DeviceStatusManager.getPosition().x
             y = DeviceStatusManager.getPosition().y
+            row = 0
+            col = 0
         }.build()
         add(p)
     }
